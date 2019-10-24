@@ -4,42 +4,50 @@
       <new-to-do @addTodo="addTodo"></new-to-do>
     </div>
     <div class="todo-container list">
-      <to-do-list :todoList="todoList"></to-do-list>
+      <to-do-list :todoList="todoList" @todoChange="todoChange"></to-do-list>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
 import NewToDo from "./components/NewToDo.vue";
 import ToDoList from "./components/ToDoList.vue";
+import ToDo from "./model/TOdo";
 
-interface ToDo {
-  name: String;
-  status: "todo" | "untodo" | "delete";
-}
 @Component({
   components: {
     NewToDo,
     ToDoList
+  },
+  watch:{
+    todoList(newValue:Array<ToDo>){
+      localStorage.setItem('data',JSON.stringify(newValue))
+    }
   }
 })
 export default class App extends Vue {
-  todoList: Array<ToDo> = [
-    {
-      name: "aaa",
-      status: "untodo"
-    }
-  ];
+
+
+  todoList:Array<ToDo> =  localStorage.getItem("data")?JSON.parse(<string>localStorage.getItem("data")):[];
+
 
   addTodo(todoText: String) {
     let todo: ToDo = {
       name: todoText,
-      status: "untodo"
+      status: "untodo",
+      index:0
     };
     this.todoList.push(todo);
   }
+
+  todoChange(todo:ToDo,status:Partial<ToDo>){
+    let index:number=this.todoList.indexOf(todo);
+    let  newTodo:ToDo=Object.assign({},todo,status);
+    this.todoList.splice(index,1,newTodo);
+  }
+
+
 }
 </script>
 
