@@ -1,8 +1,9 @@
-import Index from "@/Index.vue";
 
-
+import Login from "@/view/home/Login.vue";
+import Index from "@/view/home/Index.vue";
 const routes: Array<any> = [
-    {path: '/a', componen: Index}
+    {path: '/home', component: Index},
+    {path: '/', component: Login}
 ]
 
 

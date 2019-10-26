@@ -10,4 +10,8 @@
         //将json传入 Mock.mock 方法中，生成的数据返回给浏览器
         res.json(Mock.mock(json));
     });
+    app.get('/api/home/menu',function (rep,res) {
+        var json = util.getJsonFile('./data/menu.json');
+        res.json(json);
+    })
 }
