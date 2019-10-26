@@ -1,5 +1,6 @@
 <template>
     <div class="app">
+         {{count()}}
         <base-table @selection-change="selectionChange" :table-parameter="setTable()"></base-table>
     </div>
 </template>
@@ -27,7 +28,11 @@
 
             return tablePar;
         }
+        count(){
+            return this.$store.state.count;
+        }
         selectionChange(selection: any) {
+            this.$store.commit('increment')
             console.log(selection)
 
         }
