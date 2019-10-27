@@ -7,7 +7,7 @@
       "child": [
         {
           "text": "订单查询",
-          "id": "12"
+          "id": "/home/order"
         }, {
           "text": "新增",
           "id": "13"

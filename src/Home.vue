@@ -9,7 +9,7 @@
     import {Component, Vue} from "vue-property-decorator";
 
     @Component({
-        created(){
+        created() {
 
         }
     })
@@ -35,4 +35,13 @@
         border: 0;
         box-sizing: border-box;
     }
+
+    .icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+    }
+
 </style>

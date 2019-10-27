@@ -52,8 +52,11 @@
 </script>
 <style lang="scss" scoped>
 
+    .table-container{
+        padding: 50px;
+    }
     .pagination{
         float: right;
-        margin: 10px;
+        margin: 20px    ;
     }
 </style>

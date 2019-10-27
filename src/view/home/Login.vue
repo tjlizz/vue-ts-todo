@@ -4,19 +4,19 @@
             <h2>系统登陆</h2>
 
             <el-form ref="ruleForm" :model="ruleForm">
-                <el-form-item prop="loginName"   :rules="{
+                <el-form-item prop="loginName" :rules="{
       required: true, message: '请输入正确的用户名', trigger: 'blur'
     }">
                     <el-input autocomplete="off" v-model="ruleForm.loginName"></el-input>
                 </el-form-item>
-                <el-form-item prop="pwd"   :rules="{
+                <el-form-item prop="pwd" :rules="{
       required: true, message: '密码不能为空', trigger: 'change'
     }">
                     <el-input type="password" autocomplete="off" v-model="ruleForm.pwd"></el-input>
                 </el-form-item>
 
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm()">提交</el-button>
+                    <el-button type="primary" @click="submitForm()" :loading="showLoading">登录</el-button>
                     <el-button>重置</el-button>
                 </el-form-item>
             </el-form>
@@ -38,6 +38,7 @@
             pwd: ''
         }
 
+        showLoading = false
         rules: {
             loginName: [{
                 required: true,
@@ -50,7 +51,12 @@
         submitForm() {
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
-                    console.log(this.ruleForm)
+                    this.showLoading = true
+                    this.$store.commit('setLogin')
+                    setTimeout(() => {
+                        this.showLoading = false
+                        this.$router.push({name: 'home'}).catch(e=>{})
+                    }, 1500)
 
                 } else {
                     console.log('error submit!!');
