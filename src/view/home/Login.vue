@@ -27,9 +27,11 @@
     import {Component, Vue} from "vue-property-decorator";
     import LoginUser from "@/model/LoginUser";
     import {Form} from "element-ui";
+    import {mixins} from "vue-class-component";
+    import myMixin from '../../mixins/mixin'
 
     @Component
-    export default class App extends Vue {
+    export default class App extends mixins(myMixin) {
         public $refs!: {
             ruleForm: Form
         }
@@ -49,13 +51,15 @@
         } | undefined
 
         submitForm() {
+            console.log(this.mixinValue)
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
                     this.showLoading = true
                     this.$store.commit('setLogin')
                     setTimeout(() => {
                         this.showLoading = false
-                        this.$router.push({name: 'home'}).catch(e=>{})
+                        this.$router.push({name: 'home'}).catch(e => {
+                        })
                     }, 1500)
 
                 } else {
