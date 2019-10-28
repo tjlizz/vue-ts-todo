@@ -1,6 +1,7 @@
 export default class TableModel {
     constructor() {
     }
+
     DataQueryUrl: String = ""
     multiple: Boolean = true
     CloumnList: Array<Column> = []

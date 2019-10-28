@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import NewToDo from "./components/NewToDo.vue";
-import ToDoList from "./components/ToDoList.vue";
-import ToDo from "./model/TOdo";
+import NewToDo from "../../components/NewToDo.vue";
+import ToDoList from "../../components/ToDoList.vue";
+import ToDo from "../../model/ToDo";
 
 @Component({
   components: {
