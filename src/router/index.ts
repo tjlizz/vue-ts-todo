@@ -1,7 +1,6 @@
 import Login from "@/view/home/Login.vue";
 import Index from "@/view/home/Index.vue";
  import  Order from   "@/view/order/Index.vue"
-import User from "@/view/system/User.vue";
 const routes: Array<any> = [
 
     {

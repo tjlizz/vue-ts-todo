@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import NewToDo from "./components/NewToDo.vue";
-import ToDoList from "./components/ToDoList.vue";
-import ToDo from "./model/TOdo";
+import NewToDo from "../../components/NewToDo.vue";
+import ToDoList from "../../components/ToDoList.vue";
+import ToDo from "../../model/ToDo";
 
 @Component({
   components: {
@@ -27,11 +27,7 @@ import ToDo from "./model/TOdo";
   }
 })
 export default class App extends Vue {
-
-
   todoList:Array<ToDo> =  localStorage.getItem("data")?JSON.parse(<string>localStorage.getItem("data")):[];
-
-
   addTodo(todoText: String) {
     let todo: ToDo = {
       name: todoText,
@@ -40,7 +36,6 @@ export default class App extends Vue {
     };
     this.todoList.push(todo);
   }
-
   todoChange(todo:ToDo,status:Partial<ToDo>){
     let index:number=this.todoList.indexOf(todo);
     let  newTodo:ToDo=Object.assign({},todo,status);

@@ -1,5 +1,5 @@
-export  default  interface  StoreModel {
-     isLogin:any,
-    count:any
+export default interface StoreModel {
+    isLogin: any,
+    count: any
 
 }

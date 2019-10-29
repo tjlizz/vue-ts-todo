@@ -55,24 +55,18 @@
             user: '',
             region: ''
         }
-
         setTable() {
             let tablePar: TableModel = new TableModel();
             tablePar.DataQueryUrl = "/user/userinfo"
-
             tablePar.CloumnList = [
                 {prop: 'username', label: '用户名称'},
                 {prop: 'userid', label: '用户ID'},
                 {prop: 'date', label: '出生日期'},
                 {prop: 'email', label: '邮箱'}]
-
             return tablePar;
         }
-
         selectionChange(selection: any) {
-
             console.log(selection)
-
         }
     }
 </script>
@@ -80,7 +74,6 @@
 <style lang="scss">
     .container {
         padding: 20px;
-
         > .page-header {
             padding: 20px;
             border: 1px solid #EBEBEB;
