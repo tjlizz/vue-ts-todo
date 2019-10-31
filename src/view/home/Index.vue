@@ -2,24 +2,7 @@
     <div>
         <el-container>
             <el-aside class="menu-contaier" v-bind:class="{launch:collapse,contract:!collapse}">
-                <el-menu
-                        default-active="2"
-                        class="el-menu-vertical-demo"
-                        :collapse="!collapse"
-                        background-color="#545c64"
-                        :router="true"
-                        text-color="#fff"
-                        active-text-color="#ffd04b">
-                    <el-submenu v-for="(item,index) in menuData" :index="item.id" :key="item.id">
-                        <template slot="title">
-                            <i class="el-icon-location"></i>
-                            <span>{{item.text}}</span>
-                        </template>
-                        <el-menu-item :index="child.id" :key="child.id" v-for="(child,a) in item.child">
-                            {{child.text}}
-                        </el-menu-item>
-                    </el-submenu>
-                </el-menu>
+            <sied-menu :collapse="collapse" :menu-data="menuData"></sied-menu>
             </el-aside>
             <el-container>
                 <el-header class="page-header">
@@ -28,16 +11,13 @@
                             <use xlink:href="#icon-Hamburger"></use>
                         </svg>
                     </div>
-                    <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-                        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-                    </el-breadcrumb>
+                    <breadcrumb></breadcrumb>
                 </el-header>
                 <el-main>
-
-                    <router-view></router-view></el-main>
+                    <transition name="fade" mode="out-in">
+                    <router-view></router-view>
+                    </transition>
+                </el-main>
 
             </el-container>
         </el-container>
@@ -45,7 +25,14 @@
 </template>
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
+    import Breadcrumb from "@/view/home/components/Breadcrumb.vue";
+    import SiedMenu from "@/view/home/components/Menu.vue";
+
     @Component({
+        components: {
+            Breadcrumb,
+            SiedMenu
+        },
         mounted(this: any) {
             this.$service('/api/home/menu').then((data: any) => {
                 this.menuData = data.data.data;
@@ -84,7 +71,6 @@
     }
 
 
-
     body > .el-container {
         margin-bottom: 40px;
     }
@@ -110,27 +96,30 @@
         font-weight: bold;
     }
 
-     .el-aside.menu-contaier {
-         overflow: hidden;
+    .el-aside.menu-contaier {
+        overflow: hidden;
 
-     }
-    .el-aside.menu-contaier.launch{
+    }
+
+    .el-aside.menu-contaier.launch {
         width: 150px !important;
         transition: width .28s
 
     }
-    .el-aside.menu-contaier.contract{
+
+    .el-aside.menu-contaier.contract {
         width: 50px !important;
         transition: width .28s
 
     }
-    .el-aside.menu-contaier.contract .el-menu{
+
+    .el-aside.menu-contaier.contract .el-menu {
         width: 40px;
     }
-    .el-menu {
-     border-right: none;
-    }
 
+    .el-menu {
+        border-right: none;
+    }
 
 
 </style>

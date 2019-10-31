@@ -39,6 +39,7 @@ const store = new Vuex.Store({
 //         } else {
 //             console.log(11)
 //
+
 //             next('/aa')
 //         }
 //     } else {
