@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Vuex from "vuex"
 import VueRouter from 'vue-router'
 import routes from "@/router/index";
-import "./font/font"
+import "./font/font.js"
 import StoreModel from "@/model/store";
 
 const router = new VueRouter({

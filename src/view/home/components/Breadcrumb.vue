@@ -12,15 +12,14 @@
 
     @Component({
         created(this: any) {
-  console.log(this.$router)
-            this.firstName = this.$router.currentRoute.matched[0].meta.name;
-            this.secondName = this.$router.currentRoute.matched[1].meta.name;
+//            this.firstName = this.$router.currentRoute.matched[0].meta.name;
+  //          this.secondName = this.$router.currentRoute.matched[1].meta.name;
 
         },
         watch: {
             $route(this: any) {
-             this.firstName = this.$router.currentRoute.matched[0].meta.name;
-             this.secondName = this.$router.currentRoute.matched[1].meta.name;
+//             this.firstName = this.$router.currentRoute.matched[0].meta.name;
+  //           this.secondName = this.$router.currentRoute.matched[1].meta.name;
             }
         }
     })

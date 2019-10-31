@@ -15,7 +15,7 @@ import Vue from 'vue';
         Breadcrumb
     }
 })
-export default class Order extends Vue {
+export default class User extends Vue {
 
 
 
